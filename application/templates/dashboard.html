@@ -1,0 +1,57 @@
+  {% extends 'base.html' %}
+  <html>
+  <head>
+    {%- block head -%}  
+    {{ super() }}
+   {% endblock %}</head><body>
+  {%  block content %}
+	{% include 'side_bar.html' %}
+   <form name="dashboardForm" action="{{ url_for('dashboard.show') }}" method="post">
+  <div class="container">
+  <h2>News</h2>
+        <div class="page-content">
+            <p>Attention all employees, we will have a meeting this Tuesday in our board room. The meeting will take
+            place at 10:00 a.m. We will discuss our upcoming products.</p>
+        </div>
+
+
+      <h2>Reserve List</h2>
+   <div class="page-content">
+      <table id="reserve">
+          <thead>
+              <tr>
+                  {% for col in columns %}
+                      <th>{{col}}</th>
+                  {% endfor %}
+              </tr>
+          </thead>
+      
+        <tbody>
+            {% for item in reserve %}
+            <tr>
+                {% for key in item.keys() %}
+                <td> {{ item[key] }} </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+
+    </div>
+<h2>Recent History</h2>
+    <div class="page-content">
+      <table id="reserve">
+          {% for record in history %}
+          <tr><td>{{ record }}</td></tr>
+          {% endfor %}
+     </table>
+    </div>
+      </div>
+</div>
+
+{% endblock %}
+{%- block scripts %}
+ {{ super() }}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,253 @@
+
+
+@font-face {  
+    font-family: 'Glyphicons Halflings';
+    src: url('/static/fonts/glyphicons-halflings-regular.eot');
+    src: url('/static/fonts/glyphicons-halflings-regular.eot?#iefix')
+    format('embedded-opentype'), url('/static/fonts/glyphicons-halflings-regular.woff')
+    format('woff'), url('/static/fonts/glyphicons-halflings-regular.ttf')
+    format('truetype'), url('/static/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') 
+    format('svg'); 
+}
+
+span {
+    display: inline-block !important;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+body {
+}
+ 
+.page-content {
+    border-top-left-radius:1px;
+    border-top-right-radius:1px;
+    border-bottom-right-radius:1px
+    border-bottom-left-radius:1px;
+    margin-bottom:20px;
+}
+  
+.form-control { 
+  border-radius:0px;
+  border-color:#0F3A5C;
+  width:200px;
+}
+
+.operation-form {
+margin-bottom: 10px;
+}
+
+#sidr{
+     background-color: #850000;
+     color: #ffffff;
+	-webkit-box-shadow: inset 0 0 5px 5px #820505 !important;
+	-moz-box-shadow: inset 0 0 5px 5px #820505 !important;
+	box-shadow: inset 0 0 5px 5px #820505 !important;
+}
+
+.sidr ul li{
+	   border-top: 1px solid black !important;
+	   border-bottom: 1px solid #820505!important;
+}
+
+.sidr ul li a, .sidr ul li span{
+	   color : #ffffff !important;
+}
+
+.sidr ul li:hover > a, .sidr ul li:hover > span,
+.sidr ul li.active > a, .sidr ul li.active > span,
+.sidr ul li.sidr-class-active > a,
+.sidr ul li.sidr-class-active > span {
+       -webkit-box-shadow: none !important;
+       -moz-box-shadow: none !important;
+       box-shadow: none !important;
+       background-color: #ab1a1a;
+}
+
+.sidr ul li:hover, .sidr ul li.active, 
+.sidr ul li.sidr-class-active .sidr ul li:hover,
+.sidr ul li.active, .sidr ul li.sidr-class-active {
+	line-height: 48px !important;
+}
+
+#img {
+   background-color: white;
+}
+
+.nav {
+   margin-top: 50px;
+}
+hr {
+   margin: 10px;
+   border: 1px solid #000000;
+}
+
+#page-title {
+    color: #000000;
+    font-size: 42px;
+}
+
+#nav-operation  .nav {
+    width:100%;
+    background-color: #0F3A5C;
+    margin-top: 0px;
+}
+
+#nav-operation  {
+    border-radius: 0px;
+    border: none;
+    background-image:none;
+    background-color: #0F3A5C;
+}
+
+#nav-operation  .nav  li{
+    padding: 0px;
+    display: inline-block;
+}
+
+#nav-operation  .nav  a:hover {
+        background-color: #0C273C;
+        text-decoration: none;
+}
+
+#nav-operation  .nav  a{
+        color: white;
+}
+
+#nav-operation  .nav .active{
+    background-color: red;
+}
+
+.navbar .nav > .active > a, .navbar .nav > .active > a:hover, .navbar .nav > .active > a:focus {
+    background-color: #0C273C;
+}
+
+.collapse {
+    height: auto;
+}
+
+.btn-primary {
+	background-image: none;
+	background-color: #660505;
+	border: 1px solid #660505;
+}
+
+.btn-primary:hover {
+	background-image: none;
+	background-color: #740c0c;
+	border: 1px solid #740c0c;
+}
+
+
+.form-control:focus {
+    border-color:none !important;
+    box-shadow: none;
+}
+
+div.dataTables_length {
+    margin:10px;
+}
+
+div.dataTables_length label {
+width: 460px;
+float: left;
+text-align: left;
+}
+	     
+div.dataTables_length select {
+width: 75px;
+}
+		 
+div.dataTables_filter label {
+float: right;
+}
+			 
+div.dataTables_info {
+margin:10px;
+padding-top: 8px;
+}
+			     
+div.dataTables_paginate {
+float: right;
+margin: 0;
+}	     
+
+div.dataTables_paginate > a {
+    margin:2px;
+}
+
+
+#datatable > tbody>  tr:nth-child(odd) {
+    background-color: #F7F7F7;
+}
+#menuToggle {
+	transform:rotate(180deg);
+	-webkit-transform:rotate(180deg);
+	-moz-transform:rotate(180deg);
+	-o-transform:rotate(180deg);
+} 
+.rotated {
+	transform:rotate(0deg) !important;
+	-webkit-transform:rotate(0deg) !important;
+	-moz-transform:rotate(0deg) !important;
+	-o-transform:rotate(0deg) !important;
+}
+
+table {
+margin: 1em 0;
+clear: both;
+}
+
+#reserve{
+  width:100%;
+  font-size:15px;
+}
+#reserve th{
+  height:40px;
+  border:none;
+  border-width:0px;
+  border-color:#000000;
+  background-color:#0F3A5C;
+  color:#FFFFFF;
+  font-style:bold;
+  text-align: left;
+}
+
+#reserve td{
+  height:40px;
+  border:none;
+  border-width:0px;
+  color:rgb(102, 102, 102);
+  text-align:left;
+}
+
+#reserve tr:nth-child(even) td{
+  background-color:#D9D9D9;
+}
+
+#reserve tr:nth-child(odd) td{
+  background-color:#FFFFFF;
+}
+
+.selected_row {
+    background-color:#E2E2FF !important;
+}
+
+#order{
+    margin-left:725px;
+    margin-right:725px;
+    margin-top:25px;
+}
+
+#submitButton{
+    margin-top: 25px;
+}
+
+
+@media print {
+    body {
+        background-color: black;
+    }
+}

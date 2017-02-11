@@ -1,0 +1,52 @@
+<html>
+<head>
+	<title>Register</title>
+
+	<link rel="stylesheet" type="text/css" href="../static/css/register.css">
+
+
+</head>
+<body>
+
+	<form>
+		<label>
+			
+			<h1 id='form-title'>Sign Up</h1>
+			
+			
+			<input type="text" placeholder="Your email id or name" aria-required="true" required="">
+			
+			<br>
+			
+			<input type="text" placeholder="Your email id or name" aria-required="true" required="">
+			
+			<br>
+			
+			<input type="text" placeholder="Your email id or name" aria-required="true" required="">
+			
+			<br>
+			
+			<input type="text" placeholder="Your email id or name" aria-required="true" required="">
+			
+			<br>
+			
+			<input type="text" placeholder="Your email id or name" aria-required="true" required="">
+			
+			<br>
+			
+			<select id="selectOtion" name="restriction">
+				{% for r in roles %}
+				<option value="{{ r }}">{{ r.split('_')[0].capitalize() }}</option>
+				{% endfor %}
+			</select>
+			
+			<br>
+			
+			<input class="btn btn-primary btn-lg btn-block" type="submit" value="Sign up">
+
+
+		</label>
+	</form>
+
+</body>
+</html>

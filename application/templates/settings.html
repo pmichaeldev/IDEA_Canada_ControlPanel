@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+  <html>
+  <head>
+    {% block head %}  
+    {{ super() }}
+{% endblock %}
+</head>
+<body>
+  {%  block content %}
+  {% include 'side_bar.html' %}
+  <form name="settingsForm" action="{{ url_for('settings.show') }}" method="post">
+  <div class="container">
+   <div >
+      <h3>General Settings</h3>
+      <nav class="page-content"
+      role="navigation">
+       <h4>Languages:
+       <select name="lang">
+	{% for l in languages.keys() %}
+	<option value="{{ l }}">{{ languages[l] }}</option>
+        {% endfor %}	
+      </select>
+    </h4>
+       <h4>Backup: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <select name="backup">
+	{% for b in backups.keys() %}
+	<option value="{{ b }}">{{ backups[b] }}</option>
+	{% endfor %}
+      </select>
+       </h4>
+     </div>
+   </div>
+
+     <div>
+     <div class="container">
+     <h3>User Settings</h3>
+     <nav class="page-content"
+      role="navigation">  
+ 
+      <h4>Change Password</h4><input type="password" class="form-control" name="new_password"/>
+      <p class="{{ password_class }}">{{ pw_info }}</p>
+      
+      <h4>Change E-mail</h4><input type="email" class="form-control"  name="new_email"/>
+      <p class="{{ email_class }}">{{ email_info }}</p>
+
+      <h4>Old password</h4><input type="password" class="form-control"  name="password"/>
+      <p style="margin-top:20px"class="">Please type your old password (only if you are changing your email or password)</br>Keep blank if you are not doing anything</p>
+
+      <p class="{{ old_password_class }}">{{ old_pw_info }}</p>
+     </div>
+   </div>
+
+     <div>
+     <div class="container">
+     <h3>User Permissions</h3>
+     <nav class="page-content 
+      role="navigation">
+       <h4>User Type: {{ role.split('_')[0].capitalize() }}</h4>
+       <h5>Has access to</h5>
+       <ul>
+       {% for t in tables %}
+
+       <li>{{ t.capitalize() }}</li> 
+       {% endfor %}
+       <ul>
+         </nav>
+	   <button type="submit" class="settingsButton">Save Changes</button>
+	   <button type="button" class="settingsButton">Restore Default Settings</button>
+     </div>
+   
+   </div>
+
+  </form>
+  {% endblock %}
+   </body>
+   </html>

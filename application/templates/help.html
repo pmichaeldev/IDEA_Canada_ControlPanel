@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+<html>
+<head>
+  {% block head %}  
+  {{ super() }}
+  {% endblock %}
+</head>
+<body>
+  {%  block content %}
+  {% include 'side_bar.html' %}
+  <div class="container">
+    <div >
+      <h2 id="page-title">Help</h2>
+       <style type="text/css">
+       </style> 
+       <label id="text" class="page-content">
+        <h3>Dashboard</h3>
+        <div>
+          <p>
+           In the Dashboard, you can access the general menu for performing operations on the tables and orders. You are also presented with statistical data to further analyze the status of the orders, clients, customers, and so forth, to a relevant and well-presented manner so as to clearly identify what you want. Sections will help guide you in analysis of the data currently in the system, so please use them to your convenience.
+         </p>
+       </div>
+       <h3>News</h3>
+        <div>
+          <p>
+           The news tab in the dashboard contains a broadcast of different information about anything occuring within the system or the company, it can be used to either communicate a message among employees, inform employees about an upcoming even or anything else that warrants a company wide broadcasted message.
+         </p>
+       </div>
+       <h3>Recent History</h3>
+       <div>
+        <p>
+          Recent history will allow you to see what has happened in the system over a certain period of time, in a given presentable manner.As a tool to trace what occured, and what was performed, its utility lies in overall system administration and efficiency to allow you to further the use of the system in your own work ethic.
+        </p>
+      </div>
+      <h3>Reserve List</h3>
+      <div>
+        <p>
+          The reserve list will show you what customers have placed orders for, as well as the status of the given order. Furthermore, you will also be presented with various information relating to the customers, such as their phone numbers, names, and so on. The status of the order is very straight forward and is presented beside the ID of the order, as follows:
+        </p>
+        <ul>
+          <li>ON_RESERVE</li>
+          <li>IN_PROGRESS</li>
+          <li>PROCESSED</li>
+        </ul>
+      </div>
+      <h3>Products</h3>
+        <div>
+          <p>
+           The Products table contains the various procucts which the company offers. A user can access this table if the need ever arises to check the list of products for instance to assist a customer in finding the right product for their specific needs. Each record containing an id, a product name, a description, a price and the quantity of the product.
+         </p>
+       </div>
+      <h3>Customers</h3>
+        <div>
+          <p>
+           The Customers table contains all current and past customers of the company, a user can access this table whenever the need arises to access a customers information such as to contact them. Each record contains an id, a first and last name, email, street, postal code, town, and phone number.
+         </p>
+       </div>
+      <h3>Orders</h3>
+        <div>
+          <p>
+           The Orders table contains all current and completed orders of the company, a user can access this table to either complete an order or review past orders with a customer. Each record contains an id, a status, creation date, comments, customer id and product id.
+         </p>
+       </div>
+      <h3>Employees</h3>
+      <div>
+        <p>
+          The administrator (or persons with administrator permissions), can access a special table allowing them to view all registered users for the panel. This also presents the restrictions that apply to said users, and allows minimal user management for your convenience. To add users, refer to the registration option.  
+        </p>
+      </div>
+      <h3>Settings</h3>
+        <div>
+          <p>
+           The Setting page can be used to manipulate different elements of the system for the user such as change the language, the frequency of backup, change the password or change the email. Alongside different manipulations the settings page also displays the different user permissions for the current user.
+         </p>
+       </div>
+        <p>
+          We hope you enjoy the system and its functions!
+        </p>
+
+      </label>
+
+      {% endblock %}
+    </body>
+    </html>

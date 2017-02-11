@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+<html>
+<head>
+  {% block head %}  
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+  {% endblock %}
+</head>
+<body>
+  {%  block content %}
+	<label>
+        <form  action="{{ url_for('login.show') }}" method="post">
+		<img id="img" src="{{ url_for('static', filename='img/logo.png') }}" />
+			<br>
+			
+			<input type="text" name="email"  placeholder="Email" aria-required="true" required="" autofocus>
+
+			<p class='{{ info_class }}'>{{ user_info }}</p>
+	
+			<input type="Password" name="password" id="in2" value="" placeholder="Password" dir="auto" aria-required="true" required="">
+
+			<p class='{{ info_class }}'>{{ pw_info }}</p>
+
+			<input id="button" type="submit" value="LOGIN" class="btn_sen">
+        </form>
+	</label>
+  {%  endblock %}
+</body>
+</html>

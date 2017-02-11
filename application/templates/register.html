@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+
+  {% block head %}  
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/register.css') }}">
+  {% endblock %}
+
+<body>
+  {% block content %}
+
+  <label>
+   <h1 id='form-title'>Sign Up</h1>
+
+   <form class="form-horizontal"action="{{ url_for('register.show') }}" method="post">
+  
+    <input type='text' class='form-control' name='name' value='{{ name }}' placeholder='John Smith' autofocus> <div class='col-lg-3 {{ info_class }}'><p>{{ name_info }}</p></div>
+
+    <input type='text' class='form-control' name='name' value='{{ name }}' placeholder='John Smith'> <div class='col-lg-3 {{ info_class }}'><p>{{ name_info }}</p></div>
+
+
+    <input type='text' class='form-control' name='email' value='{{ email }}' placeholder='johnsmith@example.com'> 
+    <div class='col-lg-3 {{ info_class }}'><p>{{ email_info }}</p></div>
+
+    <input type='text' class='form-control' name='phone' value='{{ phone }}' placeholder='514-123-4567'> 
+    <div class='col-lg-3 {{ info_class }}'><p>{{ phone_info }}</p></div>
+
+
+    <input type='password' class='form-control' name='password' placeholder='Password'> 
+    <div class='col-lg-3 {{ info_class }}'><p>{{ pw_info }}</p></div>
+
+
+    <input type='password' class='form-control' name='verify' placeholder='Confirm password'> 
+    <div class='col-lg-3 {{ info_class }}'><p>{{ verify_info }}</p></div>
+
+    <select name="restriction">
+     {% for r in roles %}
+     <option value="{{ r }}">{{ r.split('_')[0].capitalize() }}</option>
+     {% endfor %}
+   </select>
+
+   <input class="btn btn-primary btn-lg btn-block" type="submit" value="Sign up">
+   <div class='col-lg-3 {{ info_class }}'><p>{{ restriction_info }}</p></div>
+
+ </form>
+
+</label>
+
+{% endblock %}
+<body>
+  </html>

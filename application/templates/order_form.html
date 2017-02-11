@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+  
+  <head>
+  {% block head %}  
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/register.css') }}">
+  {% endblock %}
+
+    {{ super() }}
+  <script type="text/javascript">
+       var req = ['first_name', 'last_name', 'email', 'product_id', 'street', 'postal_code', 'town', 'phone'];
+
+       function validate() {
+           var form = document.forms['order'];
+           var elements = form.elements;
+           for (var i = 0; i < req.length; i++) {
+               if ( !elements[req[i]].value) {
+                   alert('You are need missing fields');
+                   return false;
+               }
+           }
+           return true;
+       }
+       
+  </script>
+ 
+</head>
+
+ <body>
+  {%  block content %}
+   
+   <label>
+    <img src="{{ url_for('static', filename='img/logo.png') }}" />
+    <h1 style='text-align:center;'>{{ title_name }}</h1>
+    <div class='row'>
+    <form class='form-horizontal col-sm-4 col-sm-offset-4' id="order" action="{{ url_for('order.show') }}" method="post">
+	
+
+    <form class='form-horizontal col-sm-4 col-sm-offset-4' id="order" onsubmit="return validate();" action="{{ url_for('order.show') }}" method="post">
+        
+	
+	    <div class='form-group'>
+		<div class='col-sm-12'>
+	
+		<input type='text' class='form-control' name='first_name' value='{{ first_name }}'
+		placeholder='First name' autofocus> 
+
+
+
+		</div>
+		<div class='col-sm-12 {{ info_class }}'><p>{{ first_name_info }}</p></div>
+
+	    </div>
+	    <div class='form-group'>
+		<div class='col-sm-12'>
+		<input type='text' class='form-control' name='last_name' value='{{ last_name }}' placeholder='Last name'> 
+		</div>
+		<div class='col-sm-12 {{ info_class }}'><p>{{ name_info }}</p></div>
+	    </div>
+            <div class='form-group'>
+		<div class='col-sm-12'>
+		<input type='text' class='form-control' name='email' value='{{ email }}' placeholder='Email'> 
+		</div>
+		<div class='col-sm-12 {{ info_class }}'><p>{{ email_info }}</p></div>
+	    </div>
+            <div class='form-group'>
+		<div class='col-sm-12'>
+		<input type='text' class='form-control' name='product_id' value='{{ product_id }}' placeholder='Product'> 
+        {% if error %}
+        <p style="color:red;" >{{ error }} </p>
+        {% endif %}
+		</div>
+		<div class='col-sm-12 {{ info_class }}'><p>{{ product_info }}</p></div>
+	    </div>
+	    <div class='form-group'>
+		<div class='col-sm-12'>
+		<input type='text' class='form-control' name='street' value='{{ street }}' placeholder='Street'> 
+		</div>
+		<div class='col-sm-12 {{ info_class }}'><p>{{ street_info }}</p></div>
+		</div>
+	     <div class='form-group'>
+		<div class='col-sm-12'>
+		<input type='text' class='form-control' name='postal_code' value='{{ postal_code }}' placeholder='Postal Code'> 
+		</div>
+		<div class='col-sm-12 {{ info_class }}'><p>{{ postal_code_info}}</p></div>
+		</div>
+ 	     <div class='form-group'>
+		<div class='col-sm-12'>
+		<input type='text' class='form-control' name='town' value='{{ town }}' placeholder='Town'> 
+		</div>
+		<div class='col-sm-12 {{ info_class }}'><p>{{ town_info }}</p></div>
+		</div>
+  	     <div class='form-group'>
+		<div class='col-sm-12'>
+		<input type='tel' class='form-control' name='phone' value='{{ phone }}' placeholder='Phone'> 
+		</div>
+		<div class='col-sm-12 {{ info_class }}'><p>{{ phone_info }}</p></div>
+		</div>
+   	     <div class='form-group'>
+		<div class='col-sm-12'>
+			<textarea class="form-control" name='comments' rows="3" placeholder="Comments">
+
+			</textarea>
+		</div>
+		</div>
+	     <div class='form-group'>
+		<div class='col-sm-12'>
+		<input id="submitButton" class="btn btn-primary btn-lg btn-block" type="submit" value="Submit Order">
+           </div>
+
+           <br>
+           <br>
+           <br>
+    </form>
+
+    </label>
+  {%  endblock %}
+  </body>
+</html>

@@ -1,0 +1,178 @@
+  {% extends 'base.html' %}
+  <html>
+  <head>
+    {% block head %}  
+    {{ super() }}
+    <style>
+        @media print {
+            #sidr,
+            #simple-menu,
+            #nav-operation,
+            #datatable_length, #datatable_filter,
+            input[name="row_select"], #datatable_info,
+            #datatable_paginate , .operation-form{
+                display:none;
+                visibility:hidden; 
+            }
+
+            #page-title {
+                margin:0px !important;
+                padding:5px !important;
+                margin-bottom:10px;
+            }
+            #table_div {
+                width: 100%;
+            }
+            .container {
+                width:1000px;
+                margin:5px !important;
+            }
+            body {
+                margin:0px;
+                padding:0px;
+                width:100%;
+               position:relative;
+               left:0px !important; 
+            }
+            body * {
+                margin:0px;
+                padding:0px;
+            }
+        }
+    
+    </style>
+    {% endblock %}
+</head>
+<body>
+  {%  block content %}
+   {% include 'side_bar.html' %}
+   <div class="container">
+    <h2 id="page-title">{{ table_name }}</h2>
+      <nav id="nav-operation" class="navbar" role="navigation">
+       <div class="container-fluid">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+        <ul class="nav navbar-nav">
+		{% for op in operations %}
+        <li id="{{ op.lower() + '-op' }}">
+            {% if op.lower() == 'add' %}
+                {% if table_name == 'Employees' %}
+                    <a href="{{ url_for('register.show')}}">{{op.capitalize() }} 
+                {% elif table_name == 'Orders' %}
+                    <a href="{{ url_for('order.show')}}">{{op.capitalize() }} 
+                {% else %}
+                    <a href="#">{{op.capitalize() }} 
+                {% endif %}
+            {% else %}
+                    <a href="#">{{op.capitalize() }} 
+            {% endif %}
+                
+                <span class="{{ css_icons[op] }}"></span>
+            </a>
+        </li>
+		{% endfor %}
+        <li>
+        <a id="print-op" href="#">Print <span class="glyphicon glyphicon-print"></span></a> 
+        </li>
+       </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <div id="page-content">
+    <form id="add-form" role="form" class="operation-form" class="operation-form" style="display:none;" >
+      {% for inp in forms %}
+      <div class="form-group">
+	      <label for="{{inp.name}}">{{ inp.label }}</label>
+	      <input type="{{inp.type}}" class="form-control" id="{{inp.name}}">
+     </div>
+      {% endfor %}
+  <button id="add-btn" type="button" class="btn btn-primary operationButton">Add</button>
+   </form>
+   
+   <form id="edit-form" role="form" class="operation-form" class="operation-form" style="display:none;" >
+      {% for inp in forms %}
+      <div class="form-group">
+	      <label for="{{inp.name}}">{{ inp.label }}</label>
+	      <input type="{{inp.type}}" class="form-control" id="{{inp.name}}">
+     </div>
+      {% endfor %}
+      <button id='edit-previous' type="button" class="btn btn-default">Previous</button>
+      <button id='edit-next' type="button" class="btn btn-default">Next</button>
+  <button id="edit-btn" type="button" class="btn btn-primary operationButton">Edit</button>
+   </form>
+
+
+   <form id="delete-form" role="form" class="operation-form" class="operation-form" style="display:none;">
+    {% for inp in forms %}
+    <h4>{{ inp.label }}:<span id="{{inp.name}}"></span></h4>
+    {% endfor %}
+    <button id='delete-previous' type="button" class="btn btn-default">Previous</button>
+     <button id='delete-next' type="button" class="btn btn-default">Next</button>
+ 
+    <button id="delete-btn" type="button" class="btn btn-primary operationButton">Delete</button>
+  </form>
+  <div id="import-form" role="form" class="operation-form" class="form-group" style="display:none;">
+      <label for="import">File input</label>
+      <input type="file" id="import-op">
+      <p id="file-help" class="help-block"></p>
+      <button id="import-btn" type="button" class="btn btn-primary operationButton">Upload</button>
+  </div>
+
+  <div id="export-form" class="form-group operation-form" role="form" style="display:none;">
+      <label for="export">Export as</label>
+	  <select id="export">
+			  {% for file in export_files %}
+			   <option value="{{ file }}">{{ file }}</option>
+			  {% endfor %}
+	  </select>
+      <button id="export-btn" type="button" class="btn btn-primary operationButton">Export</button>
+  </div>
+<div  id="tablediv" class="panel panel-default">
+<table id="datatable" class="db-table table tablesorter">
+   <thead>
+      <tr>
+         <th></th>
+	 {% for col in columns %}
+	 <th>{{ col.capitalize() }}</th>
+	 {% endfor %}
+      </tr>
+   </thead>
+   <tbody>
+      {% for row in payload %}
+      <tr>
+	   <td><input name="row_select" type="checkbox"/></td>
+	   {% for td in columns %}
+       <td id="{{td}}">{{ row.__dict__[td] }}</td>
+	   {% endfor %}
+      </tr>
+      {% endfor %}
+        </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
+</body>
+{%- block scripts %}
+    {{ super() }}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.dataTables.min.js')}}"></script>
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script type="text/javascript"> 
+        var columns = [];
+        {% for col in columns %}
+        columns.push('{{ col }}');
+        {% endfor %}
+        var colArgs = [];
+        colArgs.push({"data": "input"});
+        for (var i in columns) {
+            colArgs.push({"data": columns[i]}); 
+        }
+        $("#datatable").dataTable({
+                "columns": colArgs
+        });
+       </script>
+{% endblock %}
+</html>

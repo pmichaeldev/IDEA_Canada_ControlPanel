@@ -1,0 +1,23 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.sidr.light.css') }}">
+</head>
+
+<body>
+<a id="simple-menu" href="#sidr"><img id="menuToggle" src="{{ url_for('static', filename='img/arrow2.png') }}"></a>
+    <div id="sidr">
+    <img id="img" src="{{ url_for('static', filename='img/logo.png') }}">
+    <ul>
+    <li><a href="{{ url_for('dashboard.show') }} ">Dashboard</a></li>
+     {% for key in tables %}
+         <li><a href="{{ url_for('table_template.show',table=key) }}">{{ key.capitalize() }}</a></li>
+     {% endfor %}
+  <li><a href="{{ url_for('settings.show') }}">Settings <span class="glyphicon glyphicon-cog"></span></a></li>
+  <li><a href="{{ url_for('help.show') }}">Help <span class="glyphicon glyphicon-briefcase"></span></a></li>
+  <li><a href="{{ url_for('login.logout') }}">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
+  <li></li>
+    </ul>
+  </div>
+ </body>
+</html>

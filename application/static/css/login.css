@@ -1,0 +1,35 @@
+
+
+body {
+	background-color: #FFFFFF; 
+
+}
+
+label {
+	
+	margin-top: 10%;
+	display: block;
+	text-align: center;
+
+}
+
+.errorDisplay {
+	color: red;
+}
+
+input {
+	
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	padding: 8px 35px;
+	border: 1px solid #3e3e3e;
+	color: #646464;
+	cursor: pointer;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	border-radius: 0px;
+	margin-top: 15px;
+}
+
+
