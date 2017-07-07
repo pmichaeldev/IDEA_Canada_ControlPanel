@@ -2,7 +2,7 @@
 
 To start working with the system you first need to install:
 
-If you are on linux: (you are lucky)
+If you are on linux:
 you need python(this is already installed)
 -pip
 -flask
@@ -20,7 +20,6 @@ this will install everything you need
 and you are good to go.
 
 if you are on windows:
-um...
 you need to install:
 - python
 - pip

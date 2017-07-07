@@ -8,6 +8,4 @@ def show():
     if logged_in():
         return redirect(url_for('dashboard.show'))
     else:
-	return redirect(url_for('login.show'))
-
-
+        return redirect(url_for('login.show'))
